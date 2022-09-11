@@ -1,0 +1,10 @@
+{
+  "expo": {
+    "name": "messenger-clone",
+    "slug": "messenger-clone",
+    "version": "1.0.0",
+    "assetBundlePatterns": [
+      "**/*"
+    ]
+  }
+}
