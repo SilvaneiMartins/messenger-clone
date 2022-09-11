@@ -1,4 +1,9 @@
 export default {
+    ASSORTED_COLOR: {
+        TEXT: '#A4A4A4',
+        BG_BUTTON: '#F6F6F6',
+    },
+
     PRIMARY_COLORS: {
         WRITE_100: '#FFFFFF',
         WRITE_150: '#F9F9FA',
@@ -55,15 +60,22 @@ export default {
         BLACK_900: '#000000',
     },
 
+    LINEAR_GRADIENT: {
+        RED: '#BE185D',
+        PURPLE: '#6D28D9',
+        BLUE: '#1D4ED8',
+    },
+
     STATE_COLORS: {
+        RED: '#ED0A34',
         GREEN: '#0DC268',
         ORANGE: '#FF9E00',
-        RED: '#ED0A34',
-        YELLOW_LIGHT: '#FFFCE0',
         YELLOW: '#FFD400',
+        YELLOW_LIGHT: '#FFFCE0',
     },
 
     BACKGROUND: {
+        LIGHT: '#E5E5E5',
         LIGHT_6: 'rgba(0, 16, 61, 0.1)',
         LIGHT_10: 'rgba(0, 16, 61, 0.15)',
         LIGHT_14: 'rgba(0, 16, 61, 0.20)',
