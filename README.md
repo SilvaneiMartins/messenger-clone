@@ -14,7 +14,7 @@
 </h3>
 
 <h1 align="center">
-    <a href="https://imgur.com/007uH7C"><img src="https://i.imgur.com/007uH7C.png" title="source: imgur.com" /></a>
+    <a href="https://imgur.com/2KM52Rv"><img src="https://i.imgur.com/2KM52Rv.png" title="source: imgur.com" /></a>
     <br />
 </h1>
 
@@ -42,29 +42,29 @@ Atualmente o projeto não necessita de nenhuma variável ambiente, então, é si
 
 ```bash
 # Clonar o repositório
-$ git clonehttps://github.com/SilvaneiMartins/wallet-app
+$ git https://github.com/SilvaneiMartins/messenger-clone
 
 # Acessar a pasta do projeto
-$ cd wallet-app
+$ cd messenger-clone
 
 # Instalar as dependências
-$ yarn 
+$ yarn
 $ npm install
 
 # Executar a aplicação android
-$ npx react-native run-android
-$ yarn android 
-$ expo start
+$ expo start && opção 'A' caso seja android
+OU
+$ yarn android
 
 # Executar a aplicação no ios
-$ npx react-native ios-android 
+$ expo start && opção 'I' caso seja ios
+OU
 $ yarn ios
-$ expo start
 ```
 
 ## :memo: License
 
-Este projeto está sob a licença MIT. Caso gostaria de ler, por favor acessar a licença aqui neste link [LICENSE](https://github.com/SilvaneiMartins/wallet-app/blob/master/LICENSE) para maiores informações.
+Este projeto está sob a licença MIT. Caso gostaria de ler, por favor acessar a licença aqui neste link [LICENSE](https://github.com/SilvaneiMartins/messenger-clone/blob/master/LICENSE) para maiores informações.
 
 ---
 
@@ -88,7 +88,7 @@ Aqui tem link de algumas das tecnologias utilizada no projeto.
 
 -   Quando for adicionado ferramento ao projeto sera adicionado logo acima na sessão de Tecnologias usada no projeto.
 
--   Este README será utilizado como documentação para o projeto Wallet.
+-   Este README será utilizado como documentação para o projeto Messenger Clone.
 
 ### Developer
 
