@@ -1,18 +1,19 @@
 import React from 'react';
 import { useTheme } from 'styled-components/native';
-import { Input } from 'native-base';
+import { Input, IInputProps } from 'native-base';
 import { EnvelopeSimple } from 'phosphor-react-native';
 
-export const InputEmail = () => {
+export const InputEmail = ({ ...rest }: IInputProps) => {
     const { PRIMARY_COLORS } = useTheme();
 
     return (
         <Input
+            {...rest}
             variant="underlined"
-            placeholder="Digite seu e-mail"
+            placeholderTextColor={PRIMARY_COLORS.GRAY_900}
             InputLeftElement={
                 <EnvelopeSimple
-                    size={18}
+                    size={23}
                     weight="fill"
                     color={PRIMARY_COLORS.GRAY_500}
                     style={{
@@ -23,7 +24,7 @@ export const InputEmail = () => {
             }
             bg={PRIMARY_COLORS.WRITE_500}
             borderRadius={2}
-            fontSize={13}
+            fontSize={14}
             fontWeight='light'
             fontFamily='mono'
             marginBottom={2}

@@ -1,11 +1,12 @@
 import React from 'react';
 import { useTheme } from 'styled-components/native';
-import { Box, Image, Spacer, Stack } from 'native-base';
+import { Box, Image, Spacer, Stack, View } from 'native-base';
 
 import LogoPng from '../../../assets/Logo.png';
-import { 
+import { InputPersonsalizado } from '../../../components/InputPersonalizado';
+import {
     InputEmail,
-    ButtonAccount, 
+    ButtonAccount,
     InputPassword,
     ButtonUnstyled,
     ButtonCadastro,
@@ -41,8 +42,19 @@ export const AccountScreen = () => {
                         base: '85%'
                     }}
                 >
-                    <InputEmail />
-                    <InputPassword />
+                    <InputEmail
+                        autoCorrect={false}
+                        autoCapitalize='none'
+                        keyboardType='default'
+                        placeholder="Digite seu e-mail"
+                    />
+
+                    <InputPassword
+                        autoCorrect={false}
+                        autoCapitalize='none'
+                        keyboardType='default'
+                        placeholder="Digite sua senha"
+                    />
                 </Box>
 
                 <ButtonAccount
@@ -50,7 +62,7 @@ export const AccountScreen = () => {
                     disable={false}
                     variant='subtle'
                     loading={false}
-                    onPress={() => {}}
+                    onPress={() => { }}
                     loadingText='Carregando...'
                     backGroundColor={PRIMARY_COLORS.WRITE_500}
                 />
@@ -60,13 +72,13 @@ export const AccountScreen = () => {
                     disable={false}
                     variant='subtle'
                     loading={false}
-                    onPress={() => {}}
+                    onPress={() => { }}
                     loadingText='Carregando...'
                     backGroundColor={PRIMARY_COLORS.WRITE_500}
                 />
 
-                <ButtonUnstyled 
-                    onPress={() => {}}
+                <ButtonUnstyled
+                    onPress={() => { }}
                     title='Esqueceu sua senha?'
                 />
             </Box>

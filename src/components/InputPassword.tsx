@@ -1,10 +1,17 @@
 import React, { useState } from 'react';
 import { useTheme } from 'styled-components/native';
-import { Input, Pressable } from 'native-base';
+import { Input, Pressable, IInputProps } from 'native-base';
 import { Eye, EyeSlash, LockKey } from 'phosphor-react-native';
 
-export const InputPassword = () => {
-    const { STATE_COLORS, PRIMARY_COLORS } = useTheme();
+interface InputProp extends IInputProps {
+    secureTextEntry?: boolean;
+}
+
+export const InputPassword = ({
+    secureTextEntry,
+    ...rest
+}: InputProp) => {
+    const { PRIMARY_COLORS } = useTheme();
 
     const [show, setShow] = useState(false);
 
@@ -14,11 +21,12 @@ export const InputPassword = () => {
 
     return (
         <Input
+            {...rest}
             variant="underlined"
-            placeholder="Digite sua senha"
+            placeholderTextColor={PRIMARY_COLORS.GRAY_900}
             InputLeftElement={
                 <LockKey
-                    size={18}
+                    size={23}
                     weight="fill"
                     color={PRIMARY_COLORS.GRAY_500}
                     style={{
@@ -29,9 +37,10 @@ export const InputPassword = () => {
             }
             bg={PRIMARY_COLORS.WRITE_500}
             borderRadius={2}
-            fontSize={13}
+            fontSize={14}
             fontWeight='light'
             fontFamily='mono'
+            secureTextEntry={secureTextEntry}
             _light={{
                 _focus: {
                     bg: PRIMARY_COLORS.WRITE_400,
@@ -40,28 +49,28 @@ export const InputPassword = () => {
                 }
             }}
             type={show ? "text" : "password"}
-                InputRightElement={
-                    <Pressable
-                        onPress={handleVisible}
-                        style={{
-                            marginRight: 10,
-                        }}
-                    >
-                        {show ? (
-                            <Eye
-                                size={18}
-                                weight="fill"
-                                color={PRIMARY_COLORS.GRAY_500}
-                            />
-                        ) : (
-                            <EyeSlash
-                                size={18}
-                                weight="fill"
-                                color={PRIMARY_COLORS.GRAY_500}
-                            />
-                        )}
-                    </Pressable>
-                }
+            InputRightElement={
+                <Pressable
+                    onPress={handleVisible}
+                    style={{
+                        marginRight: 10,
+                    }}
+                >
+                    {show ? (
+                        <Eye
+                            size={23}
+                            weight="fill"
+                            color={PRIMARY_COLORS.GRAY_500}
+                        />
+                    ) : (
+                        <EyeSlash
+                            size={23}
+                            weight="fill"
+                            color={PRIMARY_COLORS.GRAY_500}
+                        />
+                    )}
+                </Pressable>
+            }
         />
     )
 }
