@@ -1,5 +1,6 @@
 import React from 'react';
 import { useTheme } from 'styled-components/native';
+import { MonitorPlay } from 'phosphor-react-native';
 import {
     Box,
     VStack,
@@ -7,6 +8,9 @@ import {
     Center,
     Text,
     Button,
+    FlatList,
+    Avatar,
+    Heading,
 } from 'native-base';
 import {
     UsersThree,
@@ -14,10 +18,11 @@ import {
     PencilSimpleLine
 } from 'phosphor-react-native';
 
+import { data } from '../../../utils/Data';
 import { HeaderChat } from '../../../components';
 
 export const Chat = () => {
-    const { PRIMARY_COLORS, FONTS } = useTheme();
+    const { PRIMARY_COLORS, LINEAR_GRADIENT, STATE_COLORS } = useTheme();
 
     return (
         <VStack
@@ -52,6 +57,7 @@ export const Chat = () => {
                     fontWeight='light'
                     fontFamily='mono'
                     marginBottom={2}
+                    placeholder='Pesquisar contato'
                     _light={{
                         _focus: {
                             bg: PRIMARY_COLORS.WRITE_400,
@@ -63,6 +69,106 @@ export const Chat = () => {
             </Box>
 
             <Box
+                flexDirection={'row'}
+            >
+                <FlatList
+                    data={data}
+                    horizontal
+                    marginLeft={5}
+                    renderItem={({ item }) => (
+                        <>
+                            <Button
+                                width={20}
+                                height={20}
+                                marginRight={1.5}
+                                variant='ghost'
+                                borderRadius={'full'}
+                                backgroundColor={PRIMARY_COLORS.WRITE_500}
+                            >
+                                <Avatar
+                                    size={'lg'}
+                                    source={{ uri: item.avatarUrl }}
+                                >
+                                    <Avatar.Badge
+                                        bg={STATE_COLORS.GREEN}
+                                    />
+                                </Avatar>
+                            </Button>
+                        </>
+                    )}
+                    showsHorizontalScrollIndicator={false}
+                    ListHeaderComponent={
+                        <Button
+                            width={20}
+                            height={20}
+                            marginRight={2}
+                            borderRadius={'full'}
+                            backgroundColor={PRIMARY_COLORS.WRITE_500}
+                        >
+                            <MonitorPlay
+                                size={40}
+                                weight="fill"
+                            />
+                        </Button>
+                    }
+                />
+            </Box>
+
+            <Text
+                bold
+                marginTop={2}
+                fontSize={'md'}
+                marginLeft={7}
+                color={LINEAR_GRADIENT.PURPLE}
+            >Lista de contato</Text>
+
+            <Box
+                flex={1}
+                marginLeft={3}
+            >
+                <FlatList
+                        data={data}
+                        renderItem={({ item }) => (
+                            <>
+                                <Box
+                                    flexDirection={'row'}
+                                    alignItems={'center'}
+                                >
+                                    <Button
+                                        variant={'unstyled'}
+                                    >
+                                        <Avatar
+                                            size={'lg'}
+                                            source={{ uri: item.avatarUrl }}
+                                        >
+                                            <Avatar.Badge
+                                                bg={STATE_COLORS.GREEN}
+                                            />
+                                        </Avatar>
+                                    </Button>
+                                    <Box>
+                                        <Heading
+                                            fontSize={'lg'}
+                                        >{item.fullName}</Heading>
+                                        <Box
+                                            flexDirection={'row'}
+                                        >
+                                            <Text
+                                                color={PRIMARY_COLORS.WRITE_700}
+                                            >{item.recentText}</Text>
+                                            <Text
+                                                marginLeft={5}
+                                                color={PRIMARY_COLORS.WRITE_700}
+                                            >{item.timeStamp}</Text>
+                                        </Box>
+                                    </Box>
+                                </Box>
+                            </>
+                        )}
+                    />
+            </Box>
+
+            {/* <Box
                 flex={1}
                 marginTop={'32'}
                 alignItems={'center'}
@@ -109,7 +215,7 @@ export const Chat = () => {
                         fontFamily={'heading'}
                     >para encontrar pessoas</Text>
                 </Box>
-            </Box>
+            </Box> */}
         </VStack>
     )
 }
