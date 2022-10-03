@@ -1,6 +1,6 @@
 import React from 'react';
 import { useTheme } from 'styled-components/native';
-import { MonitorPlay } from 'phosphor-react-native';
+import { MonitorPlay, CircleWavyCheck } from 'phosphor-react-native';
 import {
     Box,
     VStack,
@@ -11,6 +11,7 @@ import {
     FlatList,
     Avatar,
     Heading,
+    Icon,
 } from 'native-base';
 import {
     UsersThree,
@@ -20,6 +21,7 @@ import {
 
 import { data } from '../../../utils/Data';
 import { HeaderChat } from '../../../components';
+import { dataContato } from '../../../utils/DataContato';
 
 export const Chat = () => {
     const { PRIMARY_COLORS, LINEAR_GRADIENT, STATE_COLORS } = useTheme();
@@ -127,7 +129,7 @@ export const Chat = () => {
                 marginLeft={3}
             >
                 <FlatList
-                        data={data}
+                        data={dataContato}
                         renderItem={({ item }) => (
                             <>
                                 <Box
@@ -135,10 +137,15 @@ export const Chat = () => {
                                     alignItems={'center'}
                                 >
                                     <Button
-                                        variant={'unstyled'}
+                                        padding={'1.5'}
+                                        marginRight={2}
+                                        variant={'ghost'}
+                                        marginBottom={'1'}
+                                        borderRadius={'full'}
+                                        backgroundColor={LINEAR_GRADIENT.BLUE}
                                     >
                                         <Avatar
-                                            size={'lg'}
+                                            size={'md'}
                                             source={{ uri: item.avatarUrl }}
                                         >
                                             <Avatar.Badge
@@ -146,7 +153,9 @@ export const Chat = () => {
                                             />
                                         </Avatar>
                                     </Button>
-                                    <Box>
+                                    <Box
+                                        flex={1}
+                                    >
                                         <Heading
                                             fontSize={'lg'}
                                         >{item.fullName}</Heading>
@@ -162,6 +171,15 @@ export const Chat = () => {
                                             >{item.timeStamp}</Text>
                                         </Box>
                                     </Box>
+                                    <Button
+                                        variant={'unstyled'}
+                                    >
+                                        <CircleWavyCheck
+                                            size={22}
+                                            weight="fill"
+                                            color={STATE_COLORS.GREEN}
+                                        />
+                                    </Button>
                                 </Box>
                             </>
                         )}
