@@ -1,7 +1,7 @@
 import React from 'react';
 import { createNativeStackNavigator } from '@react-navigation/native-stack'
 
-import { Chat } from '../screens/App/Chat';
+import { TabRoutes } from './TabRoutes';
 import { Profile } from '../screens/App/Profile';
 import { FindPhone } from '../screens/App/FindPhone';
 
@@ -10,14 +10,14 @@ const { Navigator, Screen } = createNativeStackNavigator();
 export const AppRoutes = () => {
     return (
         <Navigator
-            initialRouteName='Chat'
+            initialRouteName='TabRoutes'
             screenOptions={{
                 headerShown: false,
             }}
         >
+            <Screen name="TabRoutes" component={TabRoutes} />
             <Screen name="FindPhone" component={FindPhone} />
             <Screen name="Profile" component={Profile} />
-            <Screen name='Chat' component={Chat} />
         </Navigator>
     )
 }
