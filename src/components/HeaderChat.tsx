@@ -26,7 +26,7 @@ export const HeaderChat = () => {
                 <Text
                     bold
                     fontSize={'2xl'}
-                >Chat</Text>
+                >Mensagem</Text>
             </Box>
 
             <Box
