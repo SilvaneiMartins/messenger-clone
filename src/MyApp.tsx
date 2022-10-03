@@ -15,13 +15,13 @@ const MyApp = () => {
                     <StatusBar
                         translucent
                         barStyle='dark-content'
-                        backgroundColor={theme.BACKGROUND.LIGHT}
+                        backgroundColor={theme.PRIMARY_COLORS.WRITE_100}
                     />
 
                     <View
                         style={{
                             flex: 1,
-                            backgroundColor: theme.BACKGROUND.LIGHT,
+                            backgroundColor: theme.PRIMARY_COLORS.WRITE_100,
                         }}
                     >
                         <Routes />
