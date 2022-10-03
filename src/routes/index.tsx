@@ -1,12 +1,8 @@
 import React from 'react';
-import { View } from 'react-native';
 
+import { AppRoutes } from './AppRoutes';
 import { AuthRoutes } from './AuthRoutes';
 
 export const Routes = () => {
-    return (
-        <View>
-            <AuthRoutes />
-        </View>
-    )
+    return <AppRoutes />
 }

@@ -7,8 +7,6 @@ import { NavigationContainer } from '@react-navigation/native';
 import theme from './styles/theme';
 import { Routes } from './routes';
 
-import { AccountScreen } from './screens/Auth/AccountScreen';
-
 const MyApp = () => {
     return (
         <NativeBaseProvider>
@@ -26,7 +24,7 @@ const MyApp = () => {
                             backgroundColor: theme.BACKGROUND.LIGHT,
                         }}
                     >
-                        <AccountScreen />
+                        <Routes />
                     </View>
                 </NavigationContainer>
             </ThemeProvider>
