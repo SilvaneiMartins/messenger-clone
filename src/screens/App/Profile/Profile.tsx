@@ -26,7 +26,7 @@ export const Profile = () => {
         >
             <Box
                 marginTop={10}
-                marginLeft={5}
+                marginLeft={2}
                 flexDirection={'row'}
                 alignItems={'center'}
                 backgroundColor={PRIMARY_COLORS.WRITE_100}
