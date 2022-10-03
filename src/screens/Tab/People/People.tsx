@@ -1,10 +1,22 @@
 import React from 'react';
-import { View, Text } from 'react-native';
+import { useTheme } from 'styled-components/native';
+import { VStack } from 'native-base';
+
+import { HeaderChat } from '../../../components';
 
 export const People = () => {
+    const { PRIMARY_COLORS } = useTheme();
+
     return (
-        <View>
-            <Text>People</Text>
-        </View>
+        <VStack
+            flex={1}
+            backgroundColor={PRIMARY_COLORS.WRITE_100}
+        >
+            <HeaderChat
+                title='Pessoas'
+                rightIconTwo
+                rightIconOne
+            />
+        </VStack>
     )
 }
