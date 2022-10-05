@@ -3,6 +3,8 @@ import Ionicons from '@expo/vector-icons/Ionicons'
 import { useTheme } from 'styled-components/native';
 import { Avatar, Box, IconButton, Text } from 'native-base';
 
+import { BadgeAvatar, BadgeAvatarTitle } from '../global/Badge';
+
 interface IHeaderChatProps {
     title: string;
     rightIconOne?: boolean,
@@ -27,6 +29,9 @@ export const HeaderChat = ({
                 alignItems={'center'}
                 flexDirection={'row'}
             >
+                <BadgeAvatar>
+                    <BadgeAvatarTitle>9+</BadgeAvatarTitle>
+                </BadgeAvatar>
                 <Avatar
                     marginRight={2}
                     source={{

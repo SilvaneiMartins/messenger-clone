@@ -142,7 +142,7 @@ export const Chat = () => {
                                         variant={'ghost'}
                                         marginBottom={'1'}
                                         borderRadius={'full'}
-                                        backgroundColor={LINEAR_GRADIENT.BLUE}
+                                        backgroundColor={PRIMARY_COLORS.WRITE_500}
                                     >
                                         <Avatar
                                             size={'md'}
