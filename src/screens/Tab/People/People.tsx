@@ -1,19 +1,29 @@
 import React, { useState } from 'react';
+import { Dimensions, FlatList } from 'react-native';
 import { useTheme } from 'styled-components/native';
+import Ionicons from '@expo/vector-icons/Ionicons';
 import {
     Avatar,
     Box,
     Button,
     Center,
-    FlatList,
+    FlatList as FlatListNative,
     Heading,
+    IconButton,
+    Image,
+    Stack,
     Text,
     VStack
 } from 'native-base';
 
-import { dataContato } from '../../../utils/DataContato';
 import { HeaderChat } from '../../../components';
-import { OptionLeft, OptionLRight, OptionTitle, Options } from './styles';
+import { dataContato } from '../../../utils/DataContato';
+import {
+    OptionLeft,
+    OptionLRight,
+    OptionTitle,
+    Options,
+} from './styles';
 
 export const People = () => {
     const { PRIMARY_COLORS, LINEAR_GRADIENT, STATE_COLORS } = useTheme();
@@ -56,7 +66,7 @@ export const People = () => {
 
             {options === 'active' ? (
                 <Box>
-                    <FlatList
+                    <FlatListNative
                         contentContainerStyle={{
                             paddingBottom: 170,
                         }}
@@ -127,11 +137,99 @@ export const People = () => {
                 // </Box>
             ) : (
                 <Box
-                    flexDirection={'row'}
+                    padding={3}
                 >
-                    <Box>
+                    <FlatList
+                        data={dataContato}
+                        numColumns={2}
+                        contentContainerStyle={{
+                            paddingBottom: 160,
+                        }}
+                        renderItem={({ item }) => (
+                            <Stack
+                                flexDirection={'row'}
+                            >
+                                <Image
+                                    top={5}
+                                    left={6}
+                                    width={8}
+                                    height={8}
+                                    zIndex={1}
+                                    borderRadius={30}
+                                    position={'absolute'}
+                                    source={{ uri: item.avatarUrl }}
+                                    alt=''
+                                />
+                                <Button
+                                    variant={'unstyled'}
+                                >
+                                    <Image
+                                        width={[160]}
+                                        height={[190]}
+                                        borderRadius={10}
+                                        source={{ uri: item.avatarUrl }}
+                                        alt=''
+                                    />
 
-                    </Box>
+                                    <Text
+                                        position={'absolute'}
+                                        bottom={2}
+                                        left={2}
+                                        bold
+                                        fontSize={'md'}
+                                        color={PRIMARY_COLORS.WRITE_400}
+                                    >{item.fullName}</Text>
+                                </Button>
+                            </Stack>
+                        )}
+                        ListHeaderComponent={
+                            <Stack
+                                flexDirection={'row'}
+                            >
+                                <Button
+                                    variant={'unstyled'}
+                                >
+                                    <IconButton
+                                        top={2}
+                                        left={3}
+                                        width={8}
+                                        height={8}
+                                        zIndex={1}
+                                        borderRadius={30}
+                                        variant={'ghost'}
+                                        position={'absolute'}
+                                        _icon={{
+                                            as: Ionicons,
+                                            name: 'add-circle-outline',
+                                            size: '2xl',
+                                        }}
+                                        _hover={{
+                                            backgroundColor: PRIMARY_COLORS.WRITE_200,
+                                        }}
+                                        _pressed={{
+                                            backgroundColor: PRIMARY_COLORS.WRITE_400,
+                                        }}
+                                    />
+                                    <Image
+                                        width={[160]}
+                                        height={[190]}
+                                        borderRadius={10}
+                                        source={{ uri: 'https://github.com/silvaneimartins.png' }}
+                                        alt=''
+                                    />
+                                    <Text
+                                        position={'absolute'}
+                                        bottom={2}
+                                        left={2}
+                                        bold
+                                        fontSize={'lg'}
+                                        color={PRIMARY_COLORS.WRITE_400}
+                                    >Silvanei Martins</Text>
+                                </Button>
+                            </Stack>
+                        }
+                        showsVerticalScrollIndicator={false}
+                    />
                 </Box>
                 // <Box
                 //     flex={1}
