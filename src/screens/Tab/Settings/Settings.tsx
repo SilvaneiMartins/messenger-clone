@@ -121,6 +121,9 @@ export const Settings = () => {
 
             <ScrollView
                 showsVerticalScrollIndicator={false}
+                contentContainerStyle={{
+                    paddingBottom: 15,
+                }}
             >
                 <VStack
                     marginTop={3}
