@@ -1,12 +1,13 @@
 import React from 'react';
 import { View } from 'react-native';
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
-import { ChatCircleDots, UsersThree, GearSix, Heart } from 'phosphor-react-native';
+import { ChatCircleDots, UsersThree, GearSix, Heart, HandWaving } from 'phosphor-react-native';
 
 import theme from '../styles/theme';
 import { Chat } from '../screens/Tab/Chat';
 import Dimensions from '../utils/Dimension';
 import { People } from '../screens/Tab/People';
+import { Invite } from '../screens/Tab/Invite';
 import { Settings } from '../screens/Tab/Settings';
 import { Favorite } from '../screens/Tab/Favorite';
 
@@ -55,6 +56,36 @@ export const TabRoutes = () => {
                                 />
                             ) : (
                                 <ChatCircleDots
+                                    size={25}
+                                    weight="light"
+                                    color={focused ? theme.PRIMARY_COLORS.BLACK_500 : theme.PRIMARY_COLORS.BLACK_500}
+                                />
+                            )}
+                        </View>
+                    )
+                }}
+            />
+            <Screen
+                name='Invite'
+                component={Invite}
+                options={{
+                    tabBarLabel: 'Convidar',
+                    tabBarIcon: ({ focused }) => (
+                        <View
+                            style={{
+                                marginBottom: 10,
+                                alignItems: 'center',
+                                justifyContent: 'center',
+                            }}
+                        >
+                            {focused ? (
+                                <HandWaving
+                                    size={25}
+                                    weight="fill"
+                                    color={focused ? theme.PRIMARY_COLORS.BLACK_500 : theme.PRIMARY_COLORS.WRITE_100}
+                                />
+                            ) : (
+                                <HandWaving
                                     size={25}
                                     weight="light"
                                     color={focused ? theme.PRIMARY_COLORS.BLACK_500 : theme.PRIMARY_COLORS.BLACK_500}

@@ -1,5 +1,6 @@
 import React from 'react';
 import { useTheme } from 'styled-components/native';
+import { useNavigation } from '@react-navigation/native';
 import { MonitorPlay, CircleWavyCheck } from 'phosphor-react-native';
 import {
     Box,
@@ -12,6 +13,7 @@ import {
     Avatar,
     Heading,
     Icon,
+    Pressable,
 } from 'native-base';
 import {
     UsersThree,
@@ -25,6 +27,11 @@ import { dataContato } from '../../../utils/DataContato';
 
 export const Chat = () => {
     const { PRIMARY_COLORS, LINEAR_GRADIENT, STATE_COLORS } = useTheme();
+    const navigation = useNavigation();
+
+    const handleChatMessagem = () => {
+        navigation.navigate('ChatMessage');
+    }
 
     return (
         <VStack
@@ -120,7 +127,8 @@ export const Chat = () => {
                 bold
                 marginTop={2}
                 fontSize={'md'}
-                marginLeft={7}
+                marginLeft={5}
+                paddingY={3}
                 color={LINEAR_GRADIENT.PURPLE}
             >Lista de contato</Text>
 
@@ -131,7 +139,9 @@ export const Chat = () => {
                 <FlatList
                         data={dataContato}
                         renderItem={({ item }) => (
-                            <>
+                            <Pressable
+                                onPress={handleChatMessagem}
+                            >
                                 <Box
                                     flexDirection={'row'}
                                     alignItems={'center'}
@@ -143,6 +153,7 @@ export const Chat = () => {
                                         marginBottom={'1'}
                                         borderRadius={'full'}
                                         backgroundColor={PRIMARY_COLORS.WRITE_500}
+                                        onPress={handleChatMessagem}
                                     >
                                         <Avatar
                                             size={'md'}
@@ -181,7 +192,7 @@ export const Chat = () => {
                                         />
                                     </Button>
                                 </Box>
-                            </>
+                            </Pressable>
                         )}
                     />
             </Box>
