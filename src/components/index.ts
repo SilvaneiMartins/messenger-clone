@@ -1,5 +1,7 @@
+export * from './Message';
 export * from './InputEmail';
 export * from './HeaderChat';
+export * from './InputSearch';
 export * from './InputPassword';
 export * from './ButtonAccount';
 export * from './ButtonUnstyled';

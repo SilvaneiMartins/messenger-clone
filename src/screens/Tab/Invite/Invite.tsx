@@ -2,9 +2,10 @@ import React from 'react';
 import { useTheme } from 'styled-components/native';
 import { LinearGradient } from 'expo-linear-gradient';
 import {
+    Circle,
     VideoCamera,
+    ShareNetwork,
     HandsClapping,
-    ShareNetwork
 } from 'phosphor-react-native';
 import {
     Box,
@@ -12,19 +13,31 @@ import {
     HStack,
     Pressable,
     Text,
-    VStack
+    VStack,
+    FlatList,
+    Button,
+    Avatar,
+    Heading,
 } from 'native-base';
 
 import { HeaderChat } from '../../../components';
+import { InputSearch } from '../../../components';
+import { dataContato } from '../../../utils/DataContato';
 
 export const Invite = () => {
     const { PRIMARY_COLORS, LINEAR_GRADIENT, STATE_COLORS } = useTheme();
 
+    const sendInvite = () => {
+        console.warn('Convite Enviado.');
+    }
+
     return (
-        <VStack>
+        <VStack
+            flex={1}
+            backgroundColor={PRIMARY_COLORS.WRITE_100}
+        >
             <HeaderChat
                 title='Convidar'
-                rightIconOne
             />
 
             <HStack
@@ -137,6 +150,69 @@ export const Invite = () => {
                     >Editar</Text>
                 </Pressable>
             </Center>
+
+            <Box
+                paddingY={3}
+            >
+                <InputSearch />
+
+                <FlatList
+                    contentContainerStyle={{
+                        paddingBottom: 250,
+                    }}
+                    data={dataContato}
+                    marginTop={2}
+                    marginLeft={5}
+                    marginRight={1}
+                    marginBottom={10}
+                    renderItem={({ item }) => (
+                        <Box
+                            flexDirection={'row'}
+                            alignItems={'center'}
+                        >
+                            <Button
+                                width={10}
+                                height={10}
+                                marginBottom={1}
+                                variant='ghost'
+                                borderRadius={'full'}
+                                backgroundColor={PRIMARY_COLORS.WRITE_500}
+                            >
+                                <Avatar
+                                    size={'sm'}
+                                    source={{ uri: item.avatarUrl }}
+                                />
+                            </Button>
+                            <Box
+                                flex={1}
+                            >
+                                <Heading
+                                    fontSize={'sm'}
+                                    marginLeft={2}
+                                    numberOfLines={1}
+                                >{item.fullName}</Heading>
+                                <Text
+                                    marginLeft={2}
+                                    fontSize={[11]}
+                                    numberOfLines={1}
+                                    color={PRIMARY_COLORS.WRITE_800}
+                                >{item.receiveMessage}</Text>
+                            </Box>
+                            <Box
+                                paddingX={2}
+                            >
+                                <Pressable onPress={sendInvite}>
+                                    <Circle
+                                        size={32}
+                                        weight="light"
+                                    />
+                                </Pressable>
+                            </Box>
+                        </Box>
+                    )}
+                    showsVerticalScrollIndicator={false}
+                />
+            </Box>
         </VStack>
     )
 }

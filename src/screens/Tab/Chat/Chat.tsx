@@ -2,6 +2,7 @@ import React from 'react';
 import { useTheme } from 'styled-components/native';
 import { useNavigation } from '@react-navigation/native';
 import { MonitorPlay, CircleWavyCheck } from 'phosphor-react-native';
+import { UsersThree, PencilSimpleLine } from 'phosphor-react-native';
 import {
     Box,
     VStack,
@@ -15,14 +16,10 @@ import {
     Icon,
     Pressable,
 } from 'native-base';
-import {
-    UsersThree,
-    MagnifyingGlass,
-    PencilSimpleLine
-} from 'phosphor-react-native';
 
 import { data } from '../../../utils/Data';
 import { HeaderChat } from '../../../components';
+import { InputSearch } from '../../../components';
 import { dataContato } from '../../../utils/DataContato';
 
 export const Chat = () => {
@@ -39,43 +36,14 @@ export const Chat = () => {
             backgroundColor={PRIMARY_COLORS.WRITE_100}
         >
             <HeaderChat
-                title='Mensagem'
-                rightIconTwo
+                iconRight
+                typeCamera
+                typeCreate
+                typeChatVideo
+                title='Chat'
             />
 
-            <Box
-                paddingLeft={5}
-                paddingRight={5}
-            >
-                <Input
-                    variant="outline"
-                    placeholderTextColor={PRIMARY_COLORS.GRAY_900}
-                    InputLeftElement={
-                        <MagnifyingGlass
-                            size={25}
-                            weight="fill"
-                            color={PRIMARY_COLORS.BLACK_100}
-                            style={{
-                                marginLeft: 10,
-                            }}
-                        />
-                    }
-                    bg={PRIMARY_COLORS.WRITE_300}
-                    borderRadius={30}
-                    fontSize={14}
-                    fontWeight='light'
-                    fontFamily='mono'
-                    marginBottom={2}
-                    placeholder='Pesquisar contato'
-                    _light={{
-                        _focus: {
-                            bg: PRIMARY_COLORS.WRITE_400,
-                            borderColor: PRIMARY_COLORS.GRAY_100,
-                            placeholderTextColor: 'black',
-                        }
-                    }}
-                />
-            </Box>
+            <InputSearch />
 
             <Box
                 flexDirection={'row'}
@@ -137,64 +105,64 @@ export const Chat = () => {
                 marginLeft={3}
             >
                 <FlatList
-                        data={dataContato}
-                        renderItem={({ item }) => (
-                            <Pressable
-                                onPress={handleChatMessagem}
+                    data={dataContato}
+                    renderItem={({ item }) => (
+                        <Pressable
+                            onPress={handleChatMessagem}
+                        >
+                            <Box
+                                flexDirection={'row'}
+                                alignItems={'center'}
                             >
-                                <Box
-                                    flexDirection={'row'}
-                                    alignItems={'center'}
+                                <Button
+                                    padding={'1.5'}
+                                    marginRight={2}
+                                    variant={'ghost'}
+                                    marginBottom={'1'}
+                                    borderRadius={'full'}
+                                    backgroundColor={PRIMARY_COLORS.WRITE_500}
+                                    onPress={handleChatMessagem}
                                 >
-                                    <Button
-                                        padding={'1.5'}
-                                        marginRight={2}
-                                        variant={'ghost'}
-                                        marginBottom={'1'}
-                                        borderRadius={'full'}
-                                        backgroundColor={PRIMARY_COLORS.WRITE_500}
-                                        onPress={handleChatMessagem}
+                                    <Avatar
+                                        size={'md'}
+                                        source={{ uri: item.avatarUrl }}
                                     >
-                                        <Avatar
-                                            size={'md'}
-                                            source={{ uri: item.avatarUrl }}
-                                        >
-                                            <Avatar.Badge
-                                                bg={STATE_COLORS.GREEN}
-                                            />
-                                        </Avatar>
-                                    </Button>
-                                    <Box
-                                        flex={1}
-                                    >
-                                        <Heading
-                                            fontSize={'lg'}
-                                        >{item.fullName}</Heading>
-                                        <Box
-                                            flexDirection={'row'}
-                                        >
-                                            <Text
-                                                color={PRIMARY_COLORS.WRITE_700}
-                                            >{item.recentText}</Text>
-                                            <Text
-                                                marginLeft={5}
-                                                color={PRIMARY_COLORS.WRITE_700}
-                                            >{item.timeStamp}</Text>
-                                        </Box>
-                                    </Box>
-                                    <Button
-                                        variant={'unstyled'}
-                                    >
-                                        <CircleWavyCheck
-                                            size={22}
-                                            weight="fill"
-                                            color={STATE_COLORS.GREEN}
+                                        <Avatar.Badge
+                                            bg={STATE_COLORS.GREEN}
                                         />
-                                    </Button>
+                                    </Avatar>
+                                </Button>
+                                <Box
+                                    flex={1}
+                                >
+                                    <Heading
+                                        fontSize={'lg'}
+                                    >{item.fullName}</Heading>
+                                    <Box
+                                        flexDirection={'row'}
+                                    >
+                                        <Text
+                                            color={PRIMARY_COLORS.WRITE_700}
+                                        >{item.recentText}</Text>
+                                        <Text
+                                            marginLeft={5}
+                                            color={PRIMARY_COLORS.WRITE_700}
+                                        >{item.timeStamp}</Text>
+                                    </Box>
                                 </Box>
-                            </Pressable>
-                        )}
-                    />
+                                <Button
+                                    variant={'unstyled'}
+                                >
+                                    <CircleWavyCheck
+                                        size={22}
+                                        weight="fill"
+                                        color={STATE_COLORS.GREEN}
+                                    />
+                                </Button>
+                            </Box>
+                        </Pressable>
+                    )}
+                />
             </Box>
 
             {/* <Box

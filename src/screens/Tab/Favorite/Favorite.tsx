@@ -30,9 +30,10 @@ export const Favorite = () => {
             backgroundColor={PRIMARY_COLORS.WRITE_100}
         >
             <HeaderChat
+                iconRight
+                typeCamera
+                typeCreate
                 title='Favoritos'
-                rightIconTwo
-                rightIconOne
             />
 
             <VStack

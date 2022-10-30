@@ -3,7 +3,13 @@ import { TouchableOpacity } from 'react-native';
 import { ArrowLeft } from 'phosphor-react-native';
 import { useTheme } from 'styled-components/native';
 import { useNavigation } from '@react-navigation/native';
-import { Phone, VideoCamera, Info } from 'phosphor-react-native';
+import {
+    Phone,
+    VideoCamera,
+    Info,
+    Plus,
+    Microphone,
+} from 'phosphor-react-native';
 import {
     Avatar,
     Box,
@@ -14,7 +20,27 @@ import {
     VStack
 } from 'native-base';
 
-export const HeaderMessage = () => {
+interface IHeaderMessage {
+    title: string;
+    subTitle?: string;
+    iconRight?: boolean;
+    typeCall?: boolean;
+    typeVideo?: boolean;
+    typeAudio?: boolean;
+    typeInfo?: boolean;
+    typeAdd?: boolean;
+}
+
+export const HeaderMessage = ({
+    title,
+    subTitle,
+    iconRight,
+    typeCall,
+    typeVideo,
+    typeAudio,
+    typeInfo,
+    typeAdd,
+}: IHeaderMessage) => {
     const { PRIMARY_COLORS } = useTheme();
     const navigation = useNavigation();
 
@@ -63,11 +89,11 @@ export const HeaderMessage = () => {
                             fontSize={17}
                             fontWeight={'bold'}
                         >
-                            Silvanei Martins
+                            {title}
                         </Text>
                         <Text
                             color={PRIMARY_COLORS.WRITE_700}
-                        >Messenger</Text>
+                        >{subTitle}</Text>
                     </Box>
                 </HStack>
 
@@ -78,33 +104,65 @@ export const HeaderMessage = () => {
                         flexDirection={'row'}
                         alignItems={'center'}
                     >
-                        <Pressable
-                            padding={1.5}
-                        >
-                            <Phone
-                                size={30}
-                                weight="fill"
-                                color={PRIMARY_COLORS.BLACK_200}
-                            />
-                        </Pressable>
-                        <Pressable
-                            padding={1.5}
-                        >
-                            <VideoCamera
-                                size={30}
-                                weight="fill"
-                                color={PRIMARY_COLORS.BLACK_200}
-                            />
-                        </Pressable>
-                        <Pressable
-                            padding={1.5}
-                        >
-                            <Info
-                                size={30}
-                                weight="fill"
-                                color={PRIMARY_COLORS.BLACK_200}
-                            />
-                        </Pressable>
+                        {iconRight && (
+                            <>
+                                {typeCall && (
+                                    <Pressable
+                                        padding={1.5}
+                                    >
+                                        <Phone
+                                            size={30}
+                                            weight="fill"
+                                            color={PRIMARY_COLORS.BLACK_200}
+                                        />
+                                    </Pressable>
+                                )}
+                                {typeVideo && (
+                                    <Pressable
+                                        padding={1.5}
+                                    >
+                                        <VideoCamera
+                                            size={30}
+                                            weight="fill"
+                                            color={PRIMARY_COLORS.BLACK_200}
+                                        />
+                                    </Pressable>
+                                )}
+                                {typeInfo && (
+                                    <Pressable
+                                        padding={1.5}
+                                    >
+                                        <Info
+                                            size={30}
+                                            weight="fill"
+                                            color={PRIMARY_COLORS.BLACK_200}
+                                        />
+                                    </Pressable>
+                                )}
+                                {typeAudio && (
+                                    <Pressable
+                                        padding={1.5}
+                                    >
+                                        <Microphone
+                                            size={30}
+                                            weight="fill"
+                                            color={PRIMARY_COLORS.BLACK_200}
+                                        />
+                                    </Pressable>
+                                )}
+                                {typeAdd && (
+                                    <Pressable
+                                        padding={1.5}
+                                    >
+                                        <Plus
+                                            size={28}
+                                            weight="bold"
+                                            color={PRIMARY_COLORS.BLACK_200}
+                                        />
+                                    </Pressable>
+                                )}
+                            </>
+                        )}
                     </Box>
                 </HStack>
             </Box>

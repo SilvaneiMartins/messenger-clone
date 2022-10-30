@@ -1,5 +1,5 @@
 import React from 'react';
-import { ImageBackground } from 'react-native';
+import { ImageBackground, FlatList } from 'react-native';
 import { useTheme } from 'styled-components/native';
 import {
     CirclesFour,
@@ -8,6 +8,7 @@ import {
     Microphone,
     ThumbsUp,
     Smiley,
+    PaperPlaneRight,
 } from 'phosphor-react-native';
 import {
     Box,
@@ -24,7 +25,8 @@ import {
 } from 'native-base';
 
 import BgPng from '../../../assets/bg.png';
-import { HeaderMessage } from '../../../components';
+import messages from '../../../database/messages.json';
+import { HeaderMessage, Message } from '../../../components';
 
 export const ChatMessage = () => {
     const { PRIMARY_COLORS, LINEAR_GRADIENT } = useTheme();
@@ -34,7 +36,14 @@ export const ChatMessage = () => {
             flex={1}
             backgroundColor={PRIMARY_COLORS.WRITE_100}
         >
-            <HeaderMessage />
+            <HeaderMessage
+                title={'Silvanei Martins'}
+                subTitle={'Online'}
+                iconRight
+                typeCall
+                typeVideo
+                typeInfo
+            />
 
             <VStack
                 flex={1}
@@ -46,7 +55,7 @@ export const ChatMessage = () => {
                         flex: 1,
                     }}
                 >
-                    <VStack
+                    {/* <VStack
                         flex={1}
                         alignItems={'center'}
                         justifyContent={'center'}
@@ -90,6 +99,23 @@ export const ChatMessage = () => {
                                 color={PRIMARY_COLORS.WRITE_100}
                             >Ver o perfil</Text>
                         </Pressable>
+                    </VStack> */}
+
+                    <VStack
+                        flex={1}
+                    >
+                        <FlatList
+                            data={messages}
+                            contentContainerStyle={{
+                                padding: 5,
+                            }}
+                            keyExtractor={item => item.id}
+                            renderItem={({ item }) => (
+                                <Message message={item} />
+                            )}
+                            inverted
+                            showsVerticalScrollIndicator={false}
+                        />
                     </VStack>
                 </ImageBackground>
             </VStack>
@@ -161,6 +187,7 @@ export const ChatMessage = () => {
                         size={'md'}
                         variant="rounded"
                         placeholder="Sua mensagem..."
+                        backgroundColor={'transparent'}
                         _input={{
                             marginLeft: 2,
                         }}
@@ -183,13 +210,20 @@ export const ChatMessage = () => {
                     />
                 </Box>
                 <Pressable
-                    paddingX={1}
-                    paddingY={3}
+                    w={8}
+                    h={8}
+                    padding={1}
+                    marginLeft={2}
+                    marginRight={2}
+                    borderRadius={'full'}
+                    alignItems={'center'}
+                    justifyContent={'center'}
+                    backgroundColor={LINEAR_GRADIENT.BLUE}
                 >
-                    <ThumbsUp
-                        size={30}
+                    <PaperPlaneRight
+                        size={20}
                         weight="fill"
-                        color={LINEAR_GRADIENT.BLUE}
+                        color={PRIMARY_COLORS.WRITE_100}
                     />
                 </Pressable>
             </HStack>

@@ -1,22 +1,38 @@
 import React from 'react';
-import Ionicons from '@expo/vector-icons/Ionicons'
+import Ionicons from '@expo/vector-icons/Ionicons';
 import { useTheme } from 'styled-components/native';
+import { useNavigation } from '@react-navigation/native';
+import FontAwesome from '@expo/vector-icons/FontAwesome';
 import { Avatar, Box, IconButton, Text } from 'native-base';
+import MaterialCommunityIcons from '@expo/vector-icons/MaterialCommunityIcons';
 
 import { BadgeAvatar, BadgeAvatarTitle } from '../global/Badge';
 
 interface IHeaderChatProps {
     title: string;
-    rightIconOne?: boolean,
-    rightIconTwo?: boolean,
+    iconRight?: boolean;
+    typePerson?: string;
+    typeCamera?: boolean;
+    typeCreate?: boolean;
+    typeAddress?: boolean;
+    typeChatVideo?: boolean;
 }
 
 export const HeaderChat = ({
     title,
-    rightIconOne,
-    rightIconTwo,
+    iconRight,
+    typePerson,
+    typeCamera,
+    typeCreate,
+    typeAddress,
+    typeChatVideo,
 }: IHeaderChatProps) => {
     const { PRIMARY_COLORS } = useTheme();
+    const navigation = useNavigation();
+
+    const handleChatVideo = () => {
+        navigation.navigate('ChatVideo');
+    };
 
     return (
         <Box
@@ -47,50 +63,85 @@ export const HeaderChat = ({
             <Box
                 flexDirection={'row'}
             >
-                {!rightIconOne ? (
-                    <IconButton
-                        variant={'ghost'}
-                        borderRadius={30}
-                        _icon={{
-                            size: 25,
-                            as: Ionicons,
-                            name: 'camera-outline',
-                            color: PRIMARY_COLORS.BLACK_100,
-                        }}
-                        _pressed={{
-                            backgroundColor: PRIMARY_COLORS.WRITE_400,
-                        }}
-                    />
-                ) : (
-                    <IconButton
-                        variant={'ghost'}
-                        borderRadius={30}
-                        _icon={{
-                            size: 25,
-                            as: Ionicons,
-                            name: 'person-add-outline',
-                            color: PRIMARY_COLORS.BLACK_100,
-                        }}
-                        _pressed={{
-                            backgroundColor: PRIMARY_COLORS.WRITE_400,
-                        }}
-                    />
-                )}
-
-                {rightIconTwo && (
-                    <IconButton
-                        variant={'ghost'}
-                        borderRadius={30}
-                        _icon={{
-                            size: 25,
-                            as: Ionicons,
-                            name: 'create-outline',
-                            color: PRIMARY_COLORS.BLACK_100,
-                        }}
-                        _pressed={{
-                            backgroundColor: PRIMARY_COLORS.WRITE_400,
-                        }}
-                    />
+                {iconRight && (
+                    <>
+                        {typeCamera && (
+                            <IconButton
+                                variant={'ghost'}
+                                borderRadius={30}
+                                _icon={{
+                                    size: 25,
+                                    as: Ionicons,
+                                    name: 'camera-outline',
+                                    color: PRIMARY_COLORS.BLACK_100,
+                                }}
+                                _pressed={{
+                                    backgroundColor: PRIMARY_COLORS.WRITE_400,
+                                }}
+                            />
+                        )}
+                        {typeAddress && (
+                            <IconButton
+                                variant={'ghost'}
+                                borderRadius={30}
+                                _icon={{
+                                    size: 23,
+                                    as: FontAwesome,
+                                    name: 'address-book-o',
+                                    color: PRIMARY_COLORS.BLACK_100,
+                                }}
+                                _pressed={{
+                                    backgroundColor: PRIMARY_COLORS.WRITE_400,
+                                }}
+                            />
+                        )}
+                        {typePerson && (
+                            <IconButton
+                                variant={'ghost'}
+                                borderRadius={30}
+                                _icon={{
+                                    size: 25,
+                                    as: Ionicons,
+                                    name: 'person-add-outline',
+                                    color: PRIMARY_COLORS.BLACK_100,
+                                }}
+                                _pressed={{
+                                    backgroundColor: PRIMARY_COLORS.WRITE_400,
+                                }}
+                            />
+                        )}
+                        {typeCreate && (
+                            <IconButton
+                                variant={'ghost'}
+                                borderRadius={30}
+                                _icon={{
+                                    size: 25,
+                                    as: Ionicons,
+                                    name: 'create-outline',
+                                    color: PRIMARY_COLORS.BLACK_100,
+                                }}
+                                _pressed={{
+                                    backgroundColor: PRIMARY_COLORS.WRITE_400,
+                                }}
+                            />
+                        )}
+                        {typeChatVideo && (
+                            <IconButton
+                                onPress={handleChatVideo}
+                                variant={'ghost'}
+                                borderRadius={30}
+                                _icon={{
+                                    size: 25,
+                                    as: MaterialCommunityIcons,
+                                    name: 'message-video',
+                                    color: PRIMARY_COLORS.BLACK_100,
+                                }}
+                                _pressed={{
+                                    backgroundColor: PRIMARY_COLORS.WRITE_400,
+                                }}
+                            />
+                        )}
+                    </>
                 )}
             </Box>
         </Box>

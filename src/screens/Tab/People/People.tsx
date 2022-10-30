@@ -40,9 +40,10 @@ export const People = () => {
             backgroundColor={PRIMARY_COLORS.WRITE_100}
         >
             <HeaderChat
+                iconRight
+                typeAddress
+                typeCreate
                 title='Pessoas'
-                rightIconTwo
-                rightIconOne
             />
 
             <Options>
