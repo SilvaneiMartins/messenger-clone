@@ -3,8 +3,9 @@ import { createNativeStackNavigator } from '@react-navigation/native-stack'
 
 import { TabRoutes } from './TabRoutes';
 import { Profile } from '../screens/App/Profile';
+import { Lingando } from '../screens/App/Ligando';
 import { FindPhone } from '../screens/App/FindPhone';
-import { ChatVideo } from '../screens/Auth/ChatVideo/ChatVideo';
+import { ChatVideo } from '../screens/App/ChatVideo';
 import { ChatMessage } from '../screens/App/ChatMessage/ChatMessage';
 
 const { Navigator, Screen } = createNativeStackNavigator();
@@ -20,6 +21,7 @@ export const AppRoutes = () => {
             <Screen name="TabRoutes" component={TabRoutes} />
 
             <Screen name="Profile" component={Profile} />
+            <Screen name="Lingando" component={Lingando} />
             <Screen name="FindPhone" component={FindPhone} />
             <Screen name="ChatVideo" component={ChatVideo} />
             <Screen name="ChatMessage" component={ChatMessage} />

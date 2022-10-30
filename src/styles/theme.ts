@@ -67,6 +67,7 @@ export default {
     },
 
     STATE_COLORS: {
+        BLUE: '#157CFF',
         RED: '#ED0A34',
         GREEN: '#0DC268',
         ORANGE: '#FF9E00',

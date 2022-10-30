@@ -3,6 +3,7 @@ export declare global {
         interface RootParamList {
             ChatMessage: undefined;
             ChatVideo: undefined;
+            Lingando: undefined;
         }
     }
 }
