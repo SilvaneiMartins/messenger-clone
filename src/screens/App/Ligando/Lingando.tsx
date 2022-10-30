@@ -1,7 +1,7 @@
 import React from 'react';
 import { ImageBackground } from 'react-native';
 import { useTheme } from 'styled-components/native';
-import { ArrowLeft, CaretUp, PaintBrush, PhoneX } from 'phosphor-react-native';
+import { ArrowLeft, CaretUp, PhoneX } from 'phosphor-react-native';
 import { useNavigation } from '@react-navigation/native';
 import {
     Box,
@@ -15,10 +15,12 @@ import {
     Pressable,
     StatusBar,
     Avatar,
+    Image,
 } from 'native-base';
 
 import { ligando } from '../../../utils/Ligando';
 import BgCallPng from '../../../assets/bgcall.jpg';
+import BemVindoPng from '../../../assets/bemvindo.png';
 
 export const Lingando = () => {
     const navigation = useNavigation();
@@ -72,13 +74,24 @@ export const Lingando = () => {
                     justifyContent={'center'}
                     flexDirection={'column'}
                 >
-                    <Heading
-                        fontSize={'2xl'}
-                        lineHeight={23.44}
-                        fontWeight={'extrabold'}
+                    <Box
+                        flexDirection={'row'}
+                        alignItems={'center'}
                     >
-                        Silvanei Martins
-                    </Heading>
+                        <Image
+                            source={BemVindoPng}
+                            alt="Bem vindo"
+                        />
+                        <Heading
+                            marginLeft={3}
+                            marginTop={2}
+                            fontSize={'2xl'}
+                            lineHeight={23.44}
+                            fontWeight={'extrabold'}
+                        >
+                            Silvanei Martins
+                        </Heading>
+                    </Box>
                     <Text
                         fontSize={[16]}
                         marginTop={5}

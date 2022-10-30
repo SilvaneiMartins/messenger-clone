@@ -4,6 +4,7 @@ export declare global {
             ChatMessage: undefined;
             ChatVideo: undefined;
             Lingando: undefined;
+            Call: undefined;
         }
     }
 }

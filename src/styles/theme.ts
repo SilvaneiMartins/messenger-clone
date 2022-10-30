@@ -2,6 +2,7 @@ export default {
     ASSORTED_COLOR: {
         TEXT: '#A4A4A4',
         BG_BUTTON: '#F6F6F6',
+        BG_CALL: '#FE294D',
     },
 
     PRIMARY_COLORS: {

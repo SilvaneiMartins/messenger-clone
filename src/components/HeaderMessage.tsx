@@ -48,6 +48,10 @@ export const HeaderMessage = ({
         navigation.goBack();
     }
 
+    const handleCall = () => {
+        navigation.navigate('Call');
+    }
+
     return (
         <VStack
             paddingY={4}
@@ -109,6 +113,7 @@ export const HeaderMessage = ({
                                 {typeCall && (
                                     <Pressable
                                         padding={1.5}
+                                        onPress={handleCall}
                                     >
                                         <Phone
                                             size={30}
